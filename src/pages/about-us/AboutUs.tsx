@@ -33,7 +33,7 @@ export default function AboutPage() {
   );
 
   return (
-    <div className="min-h-screen bg-black bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[rgba(241,90,34,0.2)] via-black to-black">
+    <div className="min-h-screen pb-10 bg-black bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[rgba(241,90,34,0.2)] via-black to-black">
       <AboutHero />
       <MissionSection />
       <ValuesSection />
@@ -56,6 +56,10 @@ export default function AboutPage() {
         executive={selectedExecutive}
         onClose={() => setSelectedExecutive(null)}
       />
+     <p className="text-white text-center">
+  Are you a former executive? Please reach out through our email if you would like anything changed ❤️
+</p>
+
     </div>
   );
 }
