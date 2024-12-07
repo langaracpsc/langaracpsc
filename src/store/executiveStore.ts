@@ -19,14 +19,12 @@ export const useExecutiveStore = create(
 
       // Fetch executives from API
       fetchExecutives: async () => {
-        if (get().isLoaded) return; 
+        if (get().isLoaded) return;
         try {
           const response = await axios.get<{ executives: Executive[] }>(
-            "https://api3.langaracs.ca/executives/all"
+            `${import.meta.env.VITE_BASE_URL}/executives/all`
           );
-          // const response = await axios.get<{ executives: Executive[] }>(
-          //   `${process.env.REACT_BASE_URL}/executives/all`
-          // );
+
           if (response.data.executives) {
             set({ executives: response.data.executives, isLoaded: true });
           }
@@ -39,8 +37,9 @@ export const useExecutiveStore = create(
       validateExecutives: async () => {
         try {
           const response = await axios.get<{ executives: Executive[] }>(
-            "https://api3.langaracs.ca/executives/all"
+            `${import.meta.env.VITE_BASE_URL}/executives/all`
           );
+
           const fetchedExecutives = response.data.executives;
           const currentExecutives = get().executives;
 
