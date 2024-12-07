@@ -6,8 +6,11 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+
+    "types": ["react", "react-dom"]
   }
 }
