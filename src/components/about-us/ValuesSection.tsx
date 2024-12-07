@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 
-import { clubValuesData } from "@/data/aboutUsData";
+import { clubValuesData } from "@/data/data";
 import { motion } from "framer-motion";
 
 export function ValuesSection() {

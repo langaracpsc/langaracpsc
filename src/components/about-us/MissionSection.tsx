@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 
-import { clubMissionData } from "@/data/aboutUsData";
+import { clubMissionData } from "@/data/data";
 import { motion } from "framer-motion";
 
 export function MissionSection() {
