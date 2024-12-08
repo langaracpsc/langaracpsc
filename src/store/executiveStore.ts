@@ -17,9 +17,8 @@ export const useExecutiveStore = create(
       executives: [],
       isLoaded: false,
 
-      // Fetch executives from API
       fetchExecutives: async () => {
-        if (get().isLoaded) return;
+        if (get().isLoaded) return; // Avoid redundant fetch
         try {
           const response = await axios.get<{ executives: Executive[] }>(
             `${import.meta.env.VITE_BASE_URL}/executives/all`
@@ -33,21 +32,27 @@ export const useExecutiveStore = create(
         }
       },
 
-      // Validate data by checking for updates in the backend
       validateExecutives: async () => {
         try {
           const response = await axios.get<{ executives: Executive[] }>(
             `${import.meta.env.VITE_BASE_URL}/executives/all`
           );
-
           const fetchedExecutives = response.data.executives;
           const currentExecutives = get().executives;
 
-          if (
-            Array.isArray(fetchedExecutives) &&
-            fetchedExecutives.length !== currentExecutives.length
-          ) {
-            set({ executives: fetchedExecutives });
+          if (Array.isArray(fetchedExecutives)) {
+            const isDataDifferent =
+              fetchedExecutives.length !== currentExecutives.length ||
+              fetchedExecutives.some(
+                (fetchedExecutive, index) =>
+                  JSON.stringify(fetchedExecutive) !==
+                  JSON.stringify(currentExecutives[index])
+              );
+
+            if (isDataDifferent) {
+              console.log("Executives data has updates. Refreshing...");
+              set({ executives: fetchedExecutives });
+            }
           }
         } catch (error) {
           console.error("Error validating executives:", error);
