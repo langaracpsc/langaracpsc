@@ -14,7 +14,7 @@ const EventsSection: React.FC = () => {
     <section className="py-16 bg-gradient-to-b from-black to-gray-900 text-gray-300">
       <div className="max-w-screen-xl mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-4xl font-bold text-orange-500">Upcoming Events</h2>
+          <h2 className="text-4xl font-bold text-orange-500"> Events</h2>
       <ViewAllButton link="/events" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
