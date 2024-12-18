@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -24,12 +23,7 @@ const AboutSection: React.FC = () => (
         hackathons, and networking opportunities to sharpen your skills and
         connect with peers.
       </motion.p>
-      <Link
-        to="/about"
-        className="inline-flex justify-center items-center py-3 px-6 text-lg font-medium text-white bg-orange-500 rounded-full hover:bg-orange-700 transition duration-300"
-      >
-        Learn More
-      </Link>
+ 
     </div>
   </section>
 );
