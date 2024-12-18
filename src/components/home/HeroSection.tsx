@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import React from "react";
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="min-h-screen py-10 bg-black bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[rgba(241,90,34,0.2)] via-black to-black">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+    <section className="  bg-black bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[rgba(241,90,34,0.2)] via-black to-black">
+      <div className=" px-4 mx-auto max-w-screen-xl text-center lg:py-8 lg:px-12">
         <div
           className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-400 bg-gray-800 rounded-full hover:bg-gray-700"
           role="alert"
@@ -24,12 +24,7 @@ const HeroSection: React.FC = () => {
           collaborate, learn, and innovate in technology.
         </p>
         <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-          <Link
-            to="about"
-            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-orange-500 hover:bg-orange-700 focus:ring-4 "
-          >
-            Learn More
-          </Link>
+         
           
         </div>
       </div>

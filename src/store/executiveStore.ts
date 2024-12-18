@@ -17,42 +17,50 @@ export const useExecutiveStore = create(
       executives: [],
       isLoaded: false,
 
+      // Fetch data from the API and populate the store
       fetchExecutives: async () => {
-        if (get().isLoaded) return; // Avoid redundant fetch
         try {
           const response = await axios.get<{ executives: Executive[] }>(
             `${import.meta.env.VITE_BASE_URL}/executives/all`
           );
 
-          if (response.data.executives) {
-            set({ executives: response.data.executives, isLoaded: true });
+          const fetchedExecutives = response.data.executives;
+
+          if (fetchedExecutives) {
+            set({ executives: fetchedExecutives, isLoaded: true });
           }
         } catch (error) {
           console.error("Error fetching executives:", error);
         }
       },
 
+      // Validate local data against API data
       validateExecutives: async () => {
         try {
           const response = await axios.get<{ executives: Executive[] }>(
             `${import.meta.env.VITE_BASE_URL}/executives/all`
           );
+
           const fetchedExecutives = response.data.executives;
           const currentExecutives = get().executives;
 
-          if (Array.isArray(fetchedExecutives)) {
-            const isDataDifferent =
-              fetchedExecutives.length !== currentExecutives.length ||
-              fetchedExecutives.some(
-                (fetchedExecutive, index) =>
-                  JSON.stringify(fetchedExecutive) !==
-                  JSON.stringify(currentExecutives[index])
-              );
+          // Compare lengths or perform a deep comparison
+          const hasDifferences =
+            fetchedExecutives.length !== currentExecutives.length ||
+            !fetchedExecutives.every((apiExec, index) => {
+              const currentExec = currentExecutives[index];
+              if (!currentExec) return true; // Avoid undefined error if lengths differ
 
-            if (isDataDifferent) {
-              console.log("Executives data has updates. Refreshing...");
-              set({ executives: fetchedExecutives });
-            }
+              return Object.keys(apiExec).every((key) => {
+                const apiValue = apiExec[key as keyof Executive];
+                const currentValue = currentExec[key as keyof Executive];
+                return apiValue === currentValue;
+              });
+            });
+
+          if (hasDifferences) {
+            console.log("Updating executives due to changes in the API.");
+            set({ executives: fetchedExecutives });
           }
         } catch (error) {
           console.error("Error validating executives:", error);
