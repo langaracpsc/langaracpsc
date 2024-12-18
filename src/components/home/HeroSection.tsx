@@ -4,7 +4,7 @@ import React from "react";
 const HeroSection: React.FC = () => {
   return (
     <section className="  bg-black bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[rgba(241,90,34,0.2)] via-black to-black">
-      <div className=" px-4 mx-auto max-w-screen-xl text-center lg:py-8 lg:px-12">
+      <div className=" px-4 mx-auto max-w-screen-xl text-center  py-8 lg:px-12">
         <div
           className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-400 bg-gray-800 rounded-full hover:bg-gray-700"
           role="alert"

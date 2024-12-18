@@ -5,9 +5,21 @@ import { motion } from "framer-motion";
 
 const EventsSection: React.FC = () => {
   const events = [
-    { title: "SFU/UBC Transfer Panel", date: "Nov 28, 2024", location: "Library L224" },
-    { title: "Tech Talks: AI & ML", date: "Nov 20, 2024", location: "T Gallery" },
-    { title: "Full Stack Developer", date: "Nov 15, 2024", location: "Library L224" },
+    {
+      title: "SFU/UBC Transfer Panel",
+      date: "Nov 28, 2024",
+      location: "Library L224",
+    },
+    {
+      title: "Tech Talks: AI & ML",
+      date: "Nov 20, 2024",
+      location: "T Gallery",
+    },
+    {
+      title: "Full Stack Developer",
+      date: "Nov 15, 2024",
+      location: "Library L224",
+    },
   ];
 
   return (
@@ -15,7 +27,7 @@ const EventsSection: React.FC = () => {
       <div className="max-w-screen-xl mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-4xl font-bold text-orange-500"> Events</h2>
-      <ViewAllButton link="/events" />
+          <ViewAllButton link="/events" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.map((event, index) => (
