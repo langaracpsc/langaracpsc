@@ -16,10 +16,16 @@ export interface Executive {
   last_edited_time: string;
 }
 
-export interface ClubEvent {
-  event_date: string;
+export interface Event {
   event_name: string;
+  semester: string;
+  event_date: string;
+  event_start_date: string;
+  event_end_date: string;
   location: string;
-  registration_link: string;
-  thumbnail: string;
+  thumbnail: string | null;
+  registration_link: string | null;
+  information_link: string;
+  id: string;
+  last_edited_time: string;
 }
