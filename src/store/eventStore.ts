@@ -34,7 +34,11 @@ export const useEventStore = create<EventStoreState>((set, get) => ({
       }
 
       if (fetchedEvents) {
-        set({ events: fetchedEvents, isLoaded: true });
+        set({
+          events: fetchedEvents,
+          lastUpdate: metadata.events_last_edited,
+          isLoaded: true,
+        });
       }
     } catch (error) {
       console.error("Error fetching events:", error);
