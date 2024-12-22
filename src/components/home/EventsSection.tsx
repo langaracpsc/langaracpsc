@@ -1,21 +1,21 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import ViewAllButton from "../ViewAllButton";
 import { motion } from "framer-motion";
 
-const EventsSection: React.FC = () => {
-  const events = [
-    { title: "SFU/UBC Transfer Panel", date: "Nov 28, 2024", location: "Library L224" },
-    { title: "Tech Talks: AI & ML", date: "Nov 20, 2024", location: "T Gallery" },
-    { title: "Full Stack Developer", date: "Nov 15, 2024", location: "Library L224" },
-  ];
+import { Event } from "@/types/member";
+import ViewAllButton from "@/components/ViewAllButton";
 
+interface EventsSectionProps {
+  events: Event[];
+}
+
+const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
   return (
     <section className="py-16 bg-gradient-to-b from-black to-gray-900 text-gray-300">
       <div className="max-w-screen-xl mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-4xl font-bold text-orange-500"> Events</h2>
-      <ViewAllButton link="/events" />
+          <ViewAllButton link="/events" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.map((event, index) => (
@@ -28,9 +28,9 @@ const EventsSection: React.FC = () => {
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
               <h3 className="text-xl font-semibold text-white mb-3">
-                {event.title}
+                {event.event_name}
               </h3>
-              <p className="text-gray-400 mb-2">{event.date}</p>
+              <p className="text-gray-400 mb-2">{event.event_date}</p>
               <p className="text-gray-400 mb-4">{event.location}</p>
               <Link
                 to="/events"
