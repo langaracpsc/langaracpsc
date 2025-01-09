@@ -8,6 +8,7 @@ import Events from "./pages/events/Events";
 import Footer from "./components/Footer";
 import Home from "./pages/home/Home";
 import Navbar from "./components/Navbar";
+import { Resource } from "./pages/resources/Resources";
 
 function App() {
   const { fetchEvents } = useEventStore();
@@ -34,6 +35,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/resources" element={<Resource />} />
             <Route path="/events" element={<Events />} />
           </Routes>
         </div>
